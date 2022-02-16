@@ -1,16 +1,15 @@
 'use strict' // reduce no message error, improve efficency & give more warnings
 
-const switcher=document.querySelector('.btn'); // select class
+const portfolioItems=document.querySelectorAll('.port-single-item-wrapper'); // select class
 
-switcher.addEventListener('click', function(){
-    document.body.classList.toggle('dark-theme'); // toggle = show & hide
+portfolioItems.forEach(portfolioItem=>{
+    portfolioItem.addEventListener('mouseover', ()=>{
+        //console.log(portfolioItem);
+        console.log(portfolioItem.childNodes[3].classList); // get .portfolio-img-bg
+        portfolioItem.childNodes[3].classList.add('img-darken');
+    })
 
-    var className = document.body.className; // get the body's class name
-    if(className=="light-theme"){
-        this.textContent = "Dark"; // this = switcher
-    }else{
-        this.textContent = "Light";
-    }
-
-    console.log("current class name : " + className);
-});
+    portfolioItem.addEventListener('mouseout', ()=>{
+        portfolioItem.childNodes[3].classList.remove('img-darken');
+    })
+})
